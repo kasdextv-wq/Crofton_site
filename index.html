@@ -4,9 +4,17 @@
   <meta charset="utf-8">
   <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests; block-all-mixed-content">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Crofton | сайты и брендинг</title>
+  <title>Crofton | Студия сайтов и брендинга — логотип в подарок</title>
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <meta name="description" content="Crofton: сайты, брендинг, логотипы, брендбуки и digital-презентации для бизнеса.">
+  <meta name="description" content="Crofton — дизайн-студия полного цикла. Создаём премиальные сайты и бренд-системы. Закажите лендинг — логотип в подарок. От 20 000 ₽.">
+  <meta property="og:title" content="Crofton | Премиальные сайты и брендинг — логотип в подарок">
+  <meta property="og:description" content="Дизайн-студия полного цикла. Сайты, логотипы, брендбуки. Закажите лендинг — логотип в подарок.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://crofton.ru/">
+  <meta property="og:image" content="https://crofton.ru/uploads/assets/images/image-eeebce6db441.png">
+  <meta property="og:locale" content="ru_RU">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://crofton.ru/">
   <link rel="stylesheet" href="css/styles.css?v=dashboard-fixes-20260703-23">
 </head>
 <body>
@@ -21,6 +29,36 @@
 
     ym(109472535, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
 </script>
+<!-- Yandex.Metrika reachGoal helper -->
+<script>
+  window.ymGoal = function(goal, params) {
+    try { ym(109472535, 'reachGoal', goal, params || {}); } catch(e) {}
+  };
+</script>
+<!-- UTM parameter capture -->
+<script>
+(function(){
+  var params = new URLSearchParams(location.search);
+  var utmKeys = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','ymclid','gclid'];
+  var hasUtm = false;
+  utmKeys.forEach(function(k){
+    var v = params.get(k);
+    if(v){ sessionStorage.setItem(k,v); hasUtm = true; }
+  });
+  if(hasUtm){
+    var landing = params.get('ymclid') ? 'yandex_direct' : (params.get('utm_source') || 'unknown');
+    sessionStorage.setItem('utm_landing_source', landing);
+  }
+  window.getUtmData = function(){
+    var d = {};
+    utmKeys.forEach(function(k){
+      var v = sessionStorage.getItem(k);
+      if(v) d[k] = v;
+    });
+    return d;
+  };
+})();
+</script>
 <noscript><div><img src="https://mc.yandex.ru/watch/109472535" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 <!-- /Yandex.Metrika counter -->
   <nav class="nav" id="nav">
@@ -28,13 +66,13 @@
       <a href="#" class="logo" aria-label="Crofton"><img class="logo-img" src="uploads/assets/images/image-eeebce6db441.png" alt="Crofton"></a>
       <div class="nav-links">
         <a href="#portfolio">Кейсы</a><a href="#services">Услуги</a><a href="#about">О нас</a><a href="#reviews">Отзывы</a><a href="#contact">Контакты</a><a class="lang-link" href="en.html">EN</a>
-        <button class="nav-cta" data-scroll-contact>Связаться</button>
+        <button class="nav-cta" data-scroll-contact data-ym-goal="nav_cta_click">Заказать лендинг</button>
       </div>
       <button class="menu-btn" id="menuBtn" aria-label="Открыть меню"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
     </div>
     <div class="mobile-menu" id="mobileMenu">
       <a href="#portfolio">Кейсы</a><a href="#services">Услуги</a><a href="#about">О нас</a><a href="#reviews">Отзывы</a><a href="#contact">Контакты</a><a class="lang-link" href="en.html">EN</a>
-      <button class="nav-cta" data-scroll-contact>Связаться</button>
+      <button class="nav-cta" data-scroll-contact data-ym-goal="nav_cta_click">Заказать лендинг</button>
     </div>
   </nav>
 
@@ -44,18 +82,22 @@
       <div class="container hero-grid">
         <div class="hero-copy reveal visible">
           <div class="hero-kicker"><span class="hero-kicker-dot"></span>Дизайн-студия полного цикла</div>
+          <div class="hero-promo-banner">
+            <span class="promo-badge">🎁 Акция</span>
+            <span class="promo-text">Закажите лендинг — <strong>логотип в подарок</strong></span>
+          </div>
           <div>
             <h1>Упаковываем бизнес в <span class="accent">сайты и брендинг,</span> которые выглядят дороже рынка</h1>
             <p>Делаем визуальные системы и сайты с сильной структурой и вниманием к каждой детали.</p>
           </div>
           <div class="cta-row hero-actions">
-            <button class="main-cta" data-scroll-contact><span>Обсудить проект</span><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 5l7 7-7 7"/></svg></button>
-            <a class="hero-secondary" href="#portfolio">Смотреть кейсы</a>
+            <button class="main-cta" data-scroll-contact data-ym-goal="cta_hero_click"><span>Получить бесплатную консультацию</span><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 5l7 7-7 7"/></svg></button>
+            <a class="hero-secondary" href="#services" data-ym-goal="cta_prices_click">Узнать цены</a>
           </div>
           <div class="hero-stats" aria-label="Преимущества Crofton">
-            <span><strong>7+</strong><small>лет в дизайне</small></span>
-            <span><strong>Бренд + сайт</strong><small>единая система</small></span>
-            <span><strong>Стратегия</strong><small>сначала смысл</small></span>
+            <span><strong>50+</strong><small>проектов запущено</small></span>
+            <span><strong>1–2 недели</strong><small>срок разработки</small></span>
+            <span><strong>Правки включены</strong><small>до полного результата</small></span>
           </div>
         </div>
         <div class="hero-showcase reveal visible" aria-label="Избранные проекты">
@@ -100,28 +142,31 @@
         </div>
         <div class="price-grid fr-price-grid" data-price-panel="landing"><article class="fr-price-card reveal">
         <div class="fr-price-main">
+          <div class="promo-highlight">🎁 Логотип в подарок</div>
           <h3>Стартовый Лендинг</h3>
           <div class="fr-price">от 20 000 ₽</div>
           <p class="fr-fit">Подходит для: небольших проектов, тестирования оффера, быстрого запуска</p>
         </div>
         <div class="fr-feature-box"><ul><li><span class="feature-glow"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span><span>современный дизайн</span></li><li><span class="feature-glow"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span><span>адаптивная верстка</span></li><li><span class="feature-glow"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span><span>разработка на Tilda или Framer</span></li><li><span class="feature-glow"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span><span>до 5 блоков</span></li><li><span class="feature-glow"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span><span>базовая анимация</span></li><li><span class="feature-glow"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span><span>форма заявки</span></li></ul></div>
-        <button class="fr-select" type="button" data-order-open>Выбрать <svg class="select-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 5l7 7-7 7"/></svg></button>
+        <button class="fr-select" type="button" data-order-open data-ym-goal="pricing_select_click">Выбрать <svg class="select-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 5l7 7-7 7"/></svg></button>
       </article><article class="fr-price-card reveal">
         <div class="fr-price-main">
+          <div class="promo-highlight">🎁 Логотип в подарок</div>
           <h3>Бизнес Лендинг</h3>
           <div class="fr-price">от 45 000 ₽</div>
           <p class="fr-fit">Подходит для: бизнеса, которому нужен сильный визуал и высокая конверсия</p>
         </div>
         <div class="fr-feature-box"><ul><li><span class="feature-glow"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span><span>индивидуальный UI/UX</span></li><li><span class="feature-glow"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span><span>маркетинговая структура</span></li><li><span class="feature-glow"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span><span>глубокая проработка блоков</span></li><li><span class="feature-glow"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span><span>сложные анимации</span></li><li><span class="feature-glow"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span><span>premium визуальный стиль</span></li><li><span class="feature-glow"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span><span>SEO-ready структура</span></li></ul></div>
-        <button class="fr-select" type="button" data-order-open>Выбрать <svg class="select-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 5l7 7-7 7"/></svg></button>
+        <button class="fr-select" type="button" data-order-open data-ym-goal="pricing_select_click">Выбрать <svg class="select-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 5l7 7-7 7"/></svg></button>
       </article><article class="fr-price-card reveal">
         <div class="fr-price-main">
+          <div class="promo-highlight">🎁 Логотип в подарок</div>
           <h3>Премиум Лендинг</h3>
           <div class="fr-price">от 80 000 ₽</div>
           <p class="fr-fit">Подходит для: брендов, которым нужен уникальный digital-образ</p>
         </div>
         <div class="fr-feature-box"><ul><li><span class="feature-glow"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span><span>уникальная концепция</span></li><li><span class="feature-glow"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span><span>арт-дирекшн</span></li><li><span class="feature-glow"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span><span>motion-heavy interface</span></li><li><span class="feature-glow"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span><span>микроанимации</span></li><li><span class="feature-glow"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span><span>сложная композиция</span></li><li><span class="feature-glow"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span><span>поддержка после запуска</span></li></ul></div>
-        <button class="fr-select" type="button" data-order-open>Выбрать <svg class="select-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 5l7 7-7 7"/></svg></button>
+        <button class="fr-select" type="button" data-order-open data-ym-goal="pricing_select_click">Выбрать <svg class="select-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 5l7 7-7 7"/></svg></button>
       </article></div>
 <div class="price-grid fr-price-grid" data-price-panel="brandbook"><article class="fr-price-card reveal">
         <div class="fr-price-main">
@@ -130,7 +175,7 @@
           <p class="fr-fit">Подходит для: базовых стандартов бренда</p>
         </div>
         <div class="fr-feature-box"><ul><li><span class="feature-glow"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span><span>логотип</span></li><li><span class="feature-glow"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span><span>цветовая система</span></li><li><span class="feature-glow"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span><span>типографика</span></li><li><span class="feature-glow"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span><span>правила использования</span></li><li><span class="feature-glow"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span><span>гайд по визуалу</span></li><li><span class="feature-glow"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span><span>передача файлов</span></li></ul></div>
-        <button class="fr-select" type="button" data-order-open>Выбрать <svg class="select-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 5l7 7-7 7"/></svg></button>
+        <button class="fr-select" type="button" data-order-open data-ym-goal="pricing_select_click">Выбрать <svg class="select-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 5l7 7-7 7"/></svg></button>
       </article><article class="fr-price-card reveal">
         <div class="fr-price-main">
           <h3>Полный Брендбук</h3>
@@ -138,7 +183,7 @@
           <p class="fr-fit">Подходит для: комплексного руководства по бренду</p>
         </div>
         <div class="fr-feature-box"><ul><li><span class="feature-glow"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span><span>визуальная система</span></li><li><span class="feature-glow"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span><span>tone of voice</span></li><li><span class="feature-glow"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span><span>носители</span></li><li><span class="feature-glow"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span><span>social media guidelines</span></li><li><span class="feature-glow"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span><span>бренд-элементы</span></li><li><span class="feature-glow"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span><span>документ в PDF</span></li></ul></div>
-        <button class="fr-select" type="button" data-order-open>Выбрать <svg class="select-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 5l7 7-7 7"/></svg></button>
+        <button class="fr-select" type="button" data-order-open data-ym-goal="pricing_select_click">Выбрать <svg class="select-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 5l7 7-7 7"/></svg></button>
       </article><article class="fr-price-card reveal">
         <div class="fr-price-main">
           <h3>Расширенная Система</h3>
@@ -146,7 +191,7 @@
           <p class="fr-fit">Подходит для: полной экосистемы бренда</p>
         </div>
         <div class="fr-feature-box"><ul><li><span class="feature-glow"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span><span>комплексная айдентика</span></li><li><span class="feature-glow"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span><span>дизайн-система</span></li><li><span class="feature-glow"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span><span>motion guidelines</span></li><li><span class="feature-glow"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span><span>упаковка бренда</span></li><li><span class="feature-glow"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span><span>digital &amp; print ecosystem</span></li><li><span class="feature-glow"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span><span>арт-дирекшн</span></li></ul></div>
-        <button class="fr-select" type="button" data-order-open>Выбрать <svg class="select-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 5l7 7-7 7"/></svg></button>
+        <button class="fr-select" type="button" data-order-open data-ym-goal="pricing_select_click">Выбрать <svg class="select-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 5l7 7-7 7"/></svg></button>
       </article></div>
 <div class="price-grid fr-price-grid" data-price-panel="logo"><article class="fr-price-card reveal">
         <div class="fr-price-main">
@@ -155,7 +200,7 @@
           <p class="fr-fit">Подходит для: быстрого старта с качественным визуалом</p>
         </div>
         <div class="fr-feature-box"><ul><li><span class="feature-glow"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span><span>2 концепции</span></li><li><span class="feature-glow"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span><span>подбор шрифтов</span></li><li><span class="feature-glow"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span><span>цветовая система</span></li><li><span class="feature-glow"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span><span>экспорт файлов</span></li><li><span class="feature-glow"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span><span>варианты на светлом и тёмном</span></li></ul></div>
-        <button class="fr-select" type="button" data-order-open>Выбрать <svg class="select-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 5l7 7-7 7"/></svg></button>
+        <button class="fr-select" type="button" data-order-open data-ym-goal="pricing_select_click">Выбрать <svg class="select-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 5l7 7-7 7"/></svg></button>
       </article><article class="fr-price-card reveal">
         <div class="fr-price-main">
           <h3>Брендовый Логотип</h3>
@@ -163,7 +208,7 @@
           <p class="fr-fit">Подходит для: уникального и запоминающегося знака</p>
         </div>
         <div class="fr-feature-box"><ul><li><span class="feature-glow"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span><span>исследование ниши</span></li><li><span class="feature-glow"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span><span>уникальная идея</span></li><li><span class="feature-glow"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span><span>вариативность логотипа</span></li><li><span class="feature-glow"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span><span>mockup presentation</span></li><li><span class="feature-glow"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span><span>мини-гайд по использованию</span></li></ul></div>
-        <button class="fr-select" type="button" data-order-open>Выбрать <svg class="select-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 5l7 7-7 7"/></svg></button>
+        <button class="fr-select" type="button" data-order-open data-ym-goal="pricing_select_click">Выбрать <svg class="select-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 5l7 7-7 7"/></svg></button>
       </article><article class="fr-price-card reveal">
         <div class="fr-price-main">
           <h3>Премиум Айдентика</h3>
@@ -171,8 +216,40 @@
           <p class="fr-fit">Подходит для: полноценной визуальной системы бренда</p>
         </div>
         <div class="fr-feature-box"><ul><li><span class="feature-glow"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span><span>полноценная айдентика</span></li><li><span class="feature-glow"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span><span>визуальная система</span></li><li><span class="feature-glow"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span><span>бренд-гайд</span></li><li><span class="feature-glow"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span><span>носители и примеры</span></li><li><span class="feature-glow"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span><span>подготовка для digital и print</span></li></ul></div>
-        <button class="fr-select" type="button" data-order-open>Выбрать <svg class="select-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 5l7 7-7 7"/></svg></button>
+        <button class="fr-select" type="button" data-order-open data-ym-goal="pricing_select_click">Выбрать <svg class="select-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="M13 5l7 7-7 7"/></svg></button>
       </article></div>
+      </div>
+    </section>
+
+    <!-- Guarantees section for Yandex Direct -->
+    <section class="section light" id="guarantees">
+      <div class="container">
+        <header class="section-head center reveal">
+          <h2>Почему выбирают нас</h2>
+          <p>Работаем прозрачно и отвечаем за результат</p>
+        </header>
+        <div class="guarantees-grid">
+          <article class="guarantee-card reveal">
+            <div class="guarantee-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 4v6c0 4-3 7-7 8-4-1-7-4-7-8V7l7-4z"/><path d="M9 12l2 2 4-5"/></svg></div>
+            <h3>Гарантия результата</h3>
+            <p>Правки включены в стоимость. Работаем до тех пор, пока вы не останетесь довольны.</p>
+          </article>
+          <article class="guarantee-card reveal">
+            <div class="guarantee-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l3 2"/></svg></div>
+            <h3>Фиксированные сроки</h3>
+            <p>Лендинг за 1–2 недели. Каждый этап согласовывается по графику, без затягивания.</p>
+          </article>
+          <article class="guarantee-card reveal">
+            <div class="guarantee-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg></div>
+            <h3>50+ реализованных проектов</h3>
+            <p>Опыт в e-commerce, услугах, технологиях и производстве. Понимаем бизнес-задачи.</p>
+          </article>
+          <article class="guarantee-card reveal">
+            <div class="guarantee-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+            <h3>Первая консультация — бесплатно</h3>
+            <p>Разберём вашу задачу, предложим решение и оценку — без обязательств.</p>
+          </article>
+        </div>
       </div>
     </section>
 
@@ -285,8 +362,8 @@
       <div class="container contact-grid">
         <div class="contact-copy reveal">
           <h2>Готовы начать <span style="color:var(--dark2)">проект?</span></h2>
-          <p>Расскажите о вашей задаче, и мы предложим оптимальное решение. Первая консультация бесплатно.</p>
-          <a class="telegram-btn" href="https://t.me/EvanCrofton" target="_blank" rel="noopener noreferrer"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 3L2 11l7 2 2 7 3-5 5 4 3-16z"/></svg><span>Написать в Telegram</span></a>
+          <p>Расскажите о вашей задаче — предложим оптимальное решение и точную оценку. <strong>Первая консультация бесплатно.</strong> При заказе лендинга — логотип в подарок 🎁</p>
+          <a class="telegram-btn" href="https://t.me/EvanCrofton" target="_blank" rel="noopener noreferrer" data-ym-goal="telegram_click"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 3L2 11l7 2 2 7 3-5 5 4 3-16z"/></svg><span>Написать в Telegram</span></a>
           <div class="contact-links"><a href="#" data-email-link><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16v16H4z"/><path d="M22 6l-10 7L2 6"/></svg><span data-email-text>ivan.crofton [at] yandex.ru</span></a><a href="https://t.me/EvanCrofton" target="_blank" rel="noopener noreferrer"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 3L2 11l7 2 2 7 3-5 5 4 3-16z"/></svg><span>@EvanCrofton</span></a><a href="https://vk.com/ivancrofton" target="_blank" rel="noopener noreferrer"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7c.2 6.6 3.5 10.5 9.5 10.5h.4v-3.8c2.2.2 3.8 1.8 4.5 3.8H21c-.9-3-3.2-4.7-4.6-5.4 1.4-.9 3.5-2.9 4-5.1h-3.3c-.6 2-2.3 3.9-4.2 4V7H9.6v7C7.6 13.4 5.2 11.3 5.1 7H3z"/></svg><span>VK</span></a></div>
         </div>
         <form class="reveal" id="contactForm">
@@ -303,6 +380,10 @@
             <input id="contactMethodValue" type="text" placeholder="Ваш ник в Telegram" required>
           </div>
           <div><label for="message">Сообщение</label><textarea id="message" name="message" rows="5" placeholder="Расскажите о вашем проекте" required></textarea></div>
+          <label class="privacy-consent">
+            <input type="checkbox" id="contactPrivacy" required checked>
+            <span>Я даю согласие на <a href="#" data-legal-link="privacy">обработку персональных данных</a> и соглашаюсь с <a href="#" data-legal-link="terms">условиями использования</a></span>
+          </label>
           <button class="submit" type="submit"><span>Отправить заявку</span><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg></button>
         </form>
       </div>
@@ -319,6 +400,15 @@
       <div class="footer-bottom"><p>© <span id="year"></span> Crofton. Все права защищены.</p><div class="legal"><a href="#">Политика конфиденциальности</a><a href="#">Условия использования</a></div></div>
     </div>
   </footer>
+
+  <!-- Sticky CTA bar for mobile/tablet -->
+  <div class="sticky-cta" id="stickyCta">
+    <div class="sticky-cta-inner">
+      <div class="sticky-cta-text">🎁 Логотип <strong>в подарок</strong> при заказе лендинга</div>
+      <button class="sticky-cta-btn" data-scroll-contact data-ym-goal="sticky_cta_click">Обсудить проект</button>
+      <button class="sticky-cta-close" id="stickyCtaClose" aria-label="Закрыть">×</button>
+    </div>
+  </div>
 
   <button class="to-top" id="toTop" aria-label="Наверх"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 15l-6-6-6 6"/></svg></button>
   <div class="toast" id="toast" role="status" aria-live="polite" aria-atomic="true">Заявка отправлена! Мы свяжемся с вами в ближайшее время.</div>
@@ -352,6 +442,10 @@
             <input id="orderContactValue" type="text" placeholder="Ваш ник в Telegram" required>
           </div>
           <div><label for="orderComment">Комментарий</label><textarea id="orderComment" rows="5" placeholder="Расскажите о задаче"></textarea></div>
+          <label class="privacy-consent">
+            <input type="checkbox" id="orderPrivacy" required checked>
+            <span>Я даю согласие на <a href="#" data-legal-link="privacy">обработку персональных данных</a></span>
+          </label>
           <button class="submit" type="submit">Отправить заявку</button>
         </form>
       </section>
