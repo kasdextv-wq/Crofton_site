@@ -189,6 +189,14 @@ $channel = clean($input['channel'] ?? ($method === 'phone' ? 'telegram' : $metho
 $source = clean($input['source'] ?? 'Сайт Crofton', 200);
 $number = intval($input['number'] ?? 0);
 
+// UTM parameters for Yandex Direct tracking
+$utm_source = clean($input['utm_source'] ?? '', 200);
+$utm_medium = clean($input['utm_medium'] ?? '', 200);
+$utm_campaign = clean($input['utm_campaign'] ?? '', 200);
+$utm_content = clean($input['utm_content'] ?? '', 200);
+$utm_term = clean($input['utm_term'] ?? '', 200);
+$ymclid = clean($input['ymclid'] ?? '', 200);
+
 if ($name === '') { http_response_code(400); echo json_encode(['ok'=>false,'error'=>'Имя обязательно'], JSON_UNESCAPED_UNICODE); exit; }
 if (!is_valid_method($method)) { http_response_code(400); echo json_encode(['ok'=>false,'error'=>'Неверный способ связи'], JSON_UNESCAPED_UNICODE); exit; }
 if (!is_valid_contact($method, $contact)) { http_response_code(400); echo json_encode(['ok'=>false,'error'=>'Неверный контакт для выбранного способа связи'], JSON_UNESCAPED_UNICODE); exit; }
@@ -200,7 +208,14 @@ if (file_exists($leadFile)) { $leads = json_decode(file_get_contents($leadFile),
 if ($number <= 0) { $max = 0; foreach ($leads as $l) $max = max($max, intval($l['number'] ?? 0)); $number = $max + 1; }
 
 $message = "Заявка №{$number}. {$product}. {$name}, {$comment}\nМетод связи: {$method}\nКонтакт: {$contact}\nИсточник: {$source}";
+
 $lead = ['number'=>$number,'product'=>$product,'name'=>$name,'comment'=>$comment,'method'=>$method,'contact'=>$contact,'channel'=>$channel,'source'=>$source,'status'=>'Новая','createdAt'=>date('c'),'message'=>$message];
+if ($utm_source) $lead['utm_source'] = $utm_source;
+if ($utm_medium) $lead['utm_medium'] = $utm_medium;
+if ($utm_campaign) $lead['utm_campaign'] = $utm_campaign;
+if ($utm_content) $lead['utm_content'] = $utm_content;
+if ($utm_term) $lead['utm_term'] = $utm_term;
+if ($ymclid) $lead['ymclid'] = $ymclid;
 array_unshift($leads, $lead);
 
 $results = [];
@@ -226,6 +241,14 @@ $telegramText = "<b>🟡 Заявка №{$number}</b>
   . "<b>Источник:</b> ".tg_escape($source)."
 "
   . "<b>Время:</b> ".date('d.m.Y H:i');
+if ($utm_source || $utm_campaign || $ymclid) {
+  $telegramText .= "\n\n📊 <b>Метки:</b>";
+  if ($utm_source) $telegramText .= "\n  source: ".tg_escape($utm_source);
+  if ($utm_campaign) $telegramText .= "\n  campaign: ".tg_escape($utm_campaign);
+  if ($utm_content) $telegramText .= "\n  content: ".tg_escape($utm_content);
+  if ($utm_term) $telegramText .= "\n  term: ".tg_escape($utm_term);
+  if ($ymclid) $telegramText .= "\n  ymclid: ".tg_escape($ymclid);
+}
 if (!empty($warnings['save'])) $telegramText .= "
 
 ⚠️ <b>Не сохранилась в админку:</b> ".tg_escape($warnings['save']);

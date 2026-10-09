@@ -5,6 +5,78 @@ const nav = document.getElementById('nav');
     const toast = document.getElementById('toast');
     document.getElementById('year').textContent = new Date().getFullYear();
 
+    /* ---- Yandex.Metrika goal tracking for CTA buttons ---- */
+    document.querySelectorAll('[data-ym-goal]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const goal = btn.dataset.ymGoal;
+        if (goal && typeof window.ymGoal === 'function') window.ymGoal(goal);
+      });
+    });
+
+    /* ---- Scroll depth goals for Yandex.Metrika ---- */
+    (function() {
+      var scrollGoals = {50:false, 75:false, 90:false};
+      function checkDepth() {
+        var h = document.documentElement.scrollHeight - window.innerHeight;
+        if (h <= 0) return;
+        var pct = Math.round(window.scrollY / h * 100);
+        [50,75,90].forEach(function(n) {
+          if (pct >= n && !scrollGoals[n]) {
+            scrollGoals[n] = true;
+            if (typeof window.ymGoal === 'function') window.ymGoal('scroll_' + n + '_percent');
+          }
+        });
+      }
+      window.addEventListener('scroll', checkDepth, {passive:true});
+    })();
+
+    /* ---- Sticky CTA bar logic ---- */
+    (function() {
+      var sticky = document.getElementById('stickyCta');
+      var closeBtn = document.getElementById('stickyCtaClose');
+      if (!sticky) return;
+      var dismissed = false;
+      function checkSticky() {
+        if (dismissed) return;
+        var heroBottom = document.querySelector('.hero')?.getBoundingClientRect().bottom || 0;
+        var contactTop = document.querySelector('#contact')?.getBoundingClientRect().top || 9999;
+        if (window.scrollY > 400 && contactTop > window.innerHeight * 0.5) {
+          sticky.classList.add('visible');
+        } else {
+          sticky.classList.remove('visible');
+        }
+      }
+      window.addEventListener('scroll', checkSticky, {passive: true});
+      if (closeBtn) {
+        closeBtn.addEventListener('click', function() {
+          dismissed = true;
+          sticky.classList.remove('visible');
+        });
+      }
+      checkSticky();
+    })();
+
+    /* ---- Legal links in privacy consent ---- */
+    document.querySelectorAll('[data-legal-link]').forEach(a => {
+      a.addEventListener('click', e => {
+        e.preventDefault();
+        e.stopPropagation();
+        var type = a.dataset.legalLink === 'terms' ? 'terms' : 'privacy';
+        var modal = document.getElementById('legalModal');
+        var content = document.getElementById('legalContent');
+        if (!modal || !content) return;
+        // Reuse existing legal modal logic
+        var textsRu = {
+          privacy: '<h2>Политика конфиденциальности</h2><p>Настоящая Политика описывает, как Crofton обрабатывает данные, которые пользователь оставляет на сайте при отправке заявки.</p><h3>1. Какие данные обрабатываются</h3><ul><li>имя;</li><li>выбранный способ связи и контакт: Telegram, VK, email или телефон;</li><li>комментарий к проекту;</li><li>тип выбранной услуги.</li></ul><h3>2. Цель обработки</h3><p>Данные используются только для связи с пользователем, уточнения задачи, подготовки предложения и ведения заявки.</p><h3>3. Хранение данных</h3><p>Заявки сохраняются на сервере сайта в защищённой административной части. Доступ к ним имеет только администратор Crofton.</p><h3>4. Передача третьим лицам</h3><p>Данные не продаются и не передаются третьим лицам, кроме случаев, необходимых для обработки заявки через подключённые сервисы связи: Telegram, VK и email.</p><h3>5. Удаление данных</h3><p>Пользователь может запросить удаление своих данных, написав на контактный email Crofton.</p>',
+          terms: '<h2>Условия использования</h2><p>Используя сайт Crofton, пользователь соглашается с настоящими условиями.</p><h3>1. Назначение сайта</h3><p>Сайт предназначен для ознакомления с услугами, кейсами, ценами и отправки заявок на дизайн, брендинг и разработку.</p><h3>2. Заявки</h3><p>Отправка формы не является заключением договора. После получения заявки Crofton связывается с пользователем для уточнения задачи, сроков и стоимости.</p><h3>3. Информация на сайте</h3><p>Цены, описания услуг и примеры работ носят информационный характер и могут быть уточнены после брифа.</p><h3>4. Интеллектуальные права</h3><p>Материалы сайта, визуальный стиль, тексты и изображения не могут использоваться без согласия правообладателя.</p><h3>5. Ответственность</h3><p>Crofton не несёт ответственности за невозможность отправки заявки, вызванную сбоями хостинга, браузера или сторонних сервисов связи.</p>'
+        };
+        content.innerHTML = textsRu[type] || textsRu.privacy;
+        modal.classList.add('open');
+        modal.setAttribute('aria-hidden','false');
+        document.body.style.overflow='hidden';
+      });
+    });
+
     function scrollContact() { document.getElementById('contact').scrollIntoView({behavior:'smooth'}); mobileMenu.classList.remove('open'); menuBtn.innerHTML = `<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>`; }
     document.querySelectorAll('[data-scroll-contact]').forEach(btn => btn.addEventListener('click', scrollContact));
     menuBtn.addEventListener('click', () => {
@@ -126,9 +198,9 @@ const nav = document.getElementById('nav');
           const data=await res.json().catch(()=>({ok:false,error:'Некорректный ответ send.php'}));
           if(!res.ok || !data.ok) throw new Error(data.error||'send failed');
           if(data.warnings && data.warnings.telegram){
-            showToast('Заявка сохранена, но Telegram не отправился. Проверьте .env/бота.');
+            showToast('Заявка принята! Номер: №'+data.number+'. Мы свяжемся с вами в ближайшее время.');
           } else {
-            showToast('Спасибо! Мы свяжемся с вами в ближайшее время.');
+            showToast('✅ Заявка принята! Номер: №'+data.number+'. Свяжемся с вами в течение 2 часов.');
           }
           return data;
         }catch(e){
@@ -136,9 +208,9 @@ const nav = document.getElementById('nav');
           throw e;
         }
       }
-      function buildLead({source, product, name, comment, method, contact}){ const number=0; const channel=method==='phone'?'telegram':method; const message=`Заявка №${number}. ${product}. ${name}, ${comment||'без комментария'}. Метод связи: ${method}. Контакт: ${contact}`; return {number,source,product,name,comment:comment||'',method,contact,channel,status:'Новая',createdAt:new Date().toISOString(),message}; }
-      if(orderModal){ document.getElementById('orderForm').onsubmit=async e=>{ e.preventDefault(); const name=document.getElementById('orderName').value.trim(); const comment=document.getElementById('orderComment').value.trim(); const method=selectedMethod('order'); const contact=document.getElementById('orderContactValue').value.trim(); if(!name||!contact){showToast('Заполните имя и контакт.'); return;} const lead=buildLead({source:'Оверлей заказа',product:activeProduct?.title||'Продукт',name,comment,method,contact}); await sendLead(lead); closeOrder(); }; }
-      const contactForm=document.getElementById('contactForm'); if(contactForm){ contactForm.addEventListener('submit',async e=>{e.preventDefault(); e.stopImmediatePropagation(); const name=document.getElementById('name')?.value.trim()||'Без имени'; const comment=document.getElementById('message')?.value.trim()||''; const method=selectedMethod('contact'); const contact=document.getElementById('contactMethodValue').value.trim(); if(!contact){showToast('Укажите контакт для связи.'); return;} const lead=buildLead({source:'Форма Готовы начать проект',product:'Консультация',name,comment,method,contact}); await sendLead(lead); contactForm.reset(); applyMethod('contact','telegram');}, true); }
+      function buildLead({source, product, name, comment, method, contact}){ const number=0; const channel=method==='phone'?'telegram':method; const message=`Заявка №${number}. ${product}. ${name}, ${comment||'без комментария'}. Метод связи: ${method}. Контакт: ${contact}`; const utm = (typeof window.getUtmData === 'function') ? window.getUtmData() : {}; return {number,source,product,name,comment:comment||'',method,contact,channel,status:'Новая',createdAt:new Date().toISOString(),message,...utm}; }
+      if(orderModal){ document.getElementById('orderForm').onsubmit=async e=>{ e.preventDefault(); const privacy=document.getElementById('orderPrivacy'); if(privacy && !privacy.checked){showToast('Пожалуйста, дайте согласие на обработку данных.'); return;} const name=document.getElementById('orderName').value.trim(); const comment=document.getElementById('orderComment').value.trim(); const method=selectedMethod('order'); const contact=document.getElementById('orderContactValue').value.trim(); if(!name||!contact){showToast('Заполните имя и контакт.'); return;} const lead=buildLead({source:'Оверлей заказа',product:activeProduct?.title||'Продукт',name,comment,method,contact}); await sendLead(lead); if(typeof window.ymGoal==='function') window.ymGoal('order_form_submit',{product:activeProduct?.title||''}); closeOrder(); }; }
+      const contactForm=document.getElementById('contactForm'); if(contactForm){ contactForm.addEventListener('submit',async e=>{e.preventDefault(); e.stopImmediatePropagation(); const privacy=document.getElementById('contactPrivacy'); if(privacy && !privacy.checked){showToast('Пожалуйста, дайте согласие на обработку данных.'); return;} const name=document.getElementById('name')?.value.trim()||'Без имени'; const comment=document.getElementById('message')?.value.trim()||''; const method=selectedMethod('contact'); const contact=document.getElementById('contactMethodValue').value.trim(); if(!contact){showToast('Укажите контакт для связи.'); return;} const lead=buildLead({source:'Форма Готовы начать проект',product:'Консультация',name,comment,method,contact}); await sendLead(lead); if(typeof window.ymGoal==='function') window.ymGoal('contact_form_submit'); contactForm.reset(); applyMethod('contact','telegram');}, true); }
     })();
 
 (() => {
